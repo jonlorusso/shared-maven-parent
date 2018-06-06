@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                sh 'JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 mvn deploy'
+                sh 'JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk mvn deploy'
             }
         }
     }
