@@ -126,11 +126,12 @@
 					<version>${dockerfile.maven.plugin.version}</version>
 					<executions>
 						<execution>
-							<id>default</id>
-							<goals>
-								<goal>build</goal>
-								<goal>push</goal>
-							</goals>
+							<id>build-image</id>
+							<phase>none</phase>
+						</execution>
+						<execution>
+							<id>push-image</id>
+							<phase>none</phase>
 						</execution>
 					</executions>
 					<configuration>
@@ -195,5 +196,36 @@
 			<url>https://artifactory.swatt.exchange:4443/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>jenkins</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.spotify</groupId>
+						<artifactId>dockerfile-maven-plugin</artifactId>
+						<version>${dockerfile.maven.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>build-image</id>
+								<phase>package</phase>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>push-image</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>push</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
