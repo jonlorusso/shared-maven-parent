@@ -147,6 +147,7 @@
 						<googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
 						<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 						<tag>${project.version}</tag>
+                        <noCache>true</noCache>
 						<buildArgs>
 							<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 						</buildArgs>
