@@ -221,6 +221,9 @@
 								<goals>
 									<goal>build</goal>
 								</goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                </configuration>
 							</execution>
 							<execution>
 								<id>push-image</id>
@@ -228,6 +231,9 @@
 								<goals>
 									<goal>push</goal>
 								</goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                </configuration>
 							</execution>
 						</executions>
 					</plugin>
